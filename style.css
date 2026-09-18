@@ -1,0 +1,499 @@
+/* styling for laundry app */
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  background: #EAF1F0;
+  color: #1F2A44;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 6px 0;
+}
+
+.hint {
+  color: #55617A;
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+/* header */
+
+.site-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 20px 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+}
+
+.wordmark-token, .wordmark-stamp {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.wordmark-stamp {
+  color: #E2A63B;
+}
+
+.wordmark-sub {
+  font-size: 0.78rem;
+  color: #55617A;
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #B9C4C2;
+}
+
+.tab {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #55617A;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab.active {
+  color: #3F7C82;
+  border-bottom: 2px solid #3F7C82;
+  font-weight: 600;
+}
+
+.tab-switch {
+  color: #B5482F;
+}
+
+.slot-banner {
+  max-width: 1000px;
+  margin: 14px auto 0 auto;
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-left: 4px solid #E2A63B;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+.slot-banner b {
+  color: #1F2A44;
+}
+
+.slot-warning {
+  color: #B5482F;
+  font-weight: 600;
+}
+
+/* main content */
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 20px 60px 20px;
+}
+
+.view {
+  display: none;
+}
+.view.active {
+  display: block;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.section-label {
+  margin-top: 28px;
+}
+
+/* login page */
+
+.login-wrap {
+  max-width: 500px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+}
+
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.role-card {
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  padding: 24px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.role-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1F2A44;
+  color: #E2A63B;
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-title {
+  font-weight: 600;
+}
+
+.role-sub {
+  font-size: 0.78rem;
+  color: #55617A;
+}
+
+.login-form {
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* forms */
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.field input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background: #EAF1F0;
+}
+
+.dropzone {
+  position: relative;
+  border: 1px dashed #B9C4C2;
+  border-radius: 4px;
+  background: #EAF1F0;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dropzone input[type="file"] {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropzone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #55617A;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.dropzone-icon {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.6rem;
+  color: #3F7C82;
+}
+
+.photo-preview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.btn {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #3F7C82;
+  color: #fff;
+}
+.btn-secondary {
+  background: #1F2A44;
+  color: #fff;
+}
+
+/* wardrobe grid */
+
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.garment-card {
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.wardrobe-grid.selectable .garment-card {
+  cursor: pointer;
+}
+
+.garment-card.selected {
+  border-color: #3F7C82;
+  box-shadow: inset 0 0 0 2px #3F7C82;
+}
+
+.garment-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.garment-name {
+  font-size: 0.8rem;
+  padding: 8px 10px;
+}
+
+.garment-check {
+  font-size: 0.7rem;
+  padding: 0 10px 8px 10px;
+  color: #3F7C82;
+  min-height: 14px;
+}
+
+/* ticket stub */
+
+.ticket {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ticket-stub {
+  background: #1F2A44;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 8px;
+  border-right: 2px dashed #E2A63B;
+}
+
+.token-label {
+  font-size: 0.6rem;
+  color: #B7C2CE;
+  margin-bottom: 4px;
+}
+
+.token-number {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  color: #E2A63B;
+}
+
+.ticket-body {
+  padding: 14px 18px;
+}
+
+.ticket-name {
+  font-weight: 600;
+}
+
+.ticket-meta {
+  font-size: 0.8rem;
+  color: #55617A;
+  margin-top: 2px;
+}
+
+.ticket-garment-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.ticket-garment-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #B9C4C2;
+}
+
+.status-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-top: 10px;
+}
+
+.status-pending { background: #F0EAE0; color: #7A6A4A; }
+.status-received { background: #E6EEF5; color: #3A5A80; }
+.status-ready { background: #FCEFD6; color: #9A6B12; }
+.status-delivered { background: #E1F0DE; color: #2E7D32; }
+.status-lost { background: #FBE3DD; color: #B5482F; }
+
+/* lost and found */
+
+.lookup-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+
+.lookup-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  font-family: 'Space Mono', monospace;
+}
+
+.lost-form {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #B9C4C2;
+}
+
+.lost-form textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 10px 12px;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background: #EAF1F0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.garment-pick-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.lost-report-box {
+  background: #FBE3DD;
+  border: 1px solid #B5482F;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: #7A3020;
+}
+
+.not-found {
+  color: #B5482F;
+}
+
+/* staff desk table */
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #B9C4C2;
+  border-radius: 4px;
+  font-size: 0.86rem;
+}
+
+.staff-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: #EAF1F0;
+  border-bottom: 1px solid #B9C4C2;
+  font-size: 0.76rem;
+  color: #55617A;
+}
+
+.staff-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #B9C4C2;
+}
+
+.staff-table select {
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid #B9C4C2;
+  background: #EAF1F0;
+}
+
+.mini-thumb-row {
+  display: flex;
+  gap: 4px;
+}
+
+.mini-thumb {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid #B9C4C2;
+}
+
+/* empty states */
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #55617A;
+}
+
+/* footer */
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.78rem;
+  color: #55617A;
+}

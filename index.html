@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWASH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wordmark">
+      <span class="wordmark-token">J</span><span class="wordmark-stamp">WASH</span>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </header>
+
+  <div class="slot-banner" id="slot-banner" hidden></div>
+
+  <main>
+
+    <!-- LOGIN -->
+    <section class="view active" id="view-login">
+      <div class="login-wrap">
+        <h2>Who's logging in?</h2>
+        <p class="hint">There's no real password — pick a role to continue.</p>
+
+        <div class="role-cards">
+          <button class="role-card" id="role-student">
+            <span class="role-icon">S</span>
+            <span class="role-title">Student</span>
+            <span class="role-sub">Wardrobe, orders, lost items</span>
+          </button>
+          <button class="role-card" id="role-staff">
+            <span class="role-icon">L</span>
+            <span class="role-title">Laundry Staff</span>
+            <span class="role-sub">Track and update all orders</span>
+          </button>
+        </div>
+
+        <form class="card login-form" id="student-login-form" hidden>
+          <h2>Student details</h2>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" id="input-login-name" placeholder="Your full name" required>
+          </label>
+          <label class="field">
+            <span>Room / Hostel No.</span>
+            <input type="text" id="input-login-room" placeholder="e.g. H3-214" required>
+          </label>
+          <label class="field">
+            <span>Laundry ID (4 digit, same one for all 4 years)</span>
+            <input type="text" id="input-login-laundryid" placeholder="e.g. 2464" maxlength="4" pattern="[0-9]{4}" required>
+          </label>
+          <button type="submit" class="btn btn-primary">Continue</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- WARDROBE (student) -->
+    <section class="view" id="view-wardrobe">
+      <div class="view-head">
+        <div>
+          <h2>My digital wardrobe</h2>
+          <p class="hint">Upload a photo of a garment once — it's saved here and reused for every future laundry order, so you never re-upload the same item.</p>
+        </div>
+      </div>
+
+      <form class="card form-card" id="garment-form">
+        <label class="field">
+          <span>Garment name</span>
+          <input type="text" id="input-garment-name" placeholder="e.g. Blue striped shirt" required>
+        </label>
+        <label class="field">
+          <span>Photo</span>
+          <div class="dropzone" id="garment-dropzone">
+            <input type="file" id="input-garment-photo" accept="image/*" capture="environment" required>
+            <div class="dropzone-inner" id="garment-dropzone-inner">
+              <span class="dropzone-icon">+</span>
+              <span>Tap to add a photo</span>
+            </div>
+            <img id="garment-photo-preview" class="photo-preview" alt="Preview" hidden>
+          </div>
+        </label>
+        <button type="submit" class="btn btn-primary">Add to wardrobe</button>
+      </form>
+
+      <h2 class="section-label">Saved garments</h2>
+      <div class="wardrobe-grid" id="wardrobe-grid"></div>
+      <div class="empty-state" id="wardrobe-empty" hidden>
+        <p>No garments saved yet.</p>
+        <p class="empty-sub">Add one above — you'll only need to do this once per item.</p>
+      </div>
+    </section>
+
+    <!-- NEW ORDER (student) -->
+    <section class="view" id="view-neworder">
+      <h2>New laundry order</h2>
+      <p class="hint">Pick garments from your wardrobe to bundle into one submission — no re-uploading needed. Your order stays "pending" until laundry staff confirm they've received it.</p>
+
+      <div class="wardrobe-grid selectable" id="order-garment-picker"></div>
+      <div class="empty-state" id="order-picker-empty" hidden>
+        <p>Your wardrobe is empty.</p>
+        <p class="empty-sub">Add garments in the Wardrobe tab first.</p>
+      </div>
+
+      <button class="btn btn-primary" id="create-order-btn" style="margin-top:16px;">Submit for pickup</button>
+
+      <div id="order-preview-slot"></div>
+    </section>
+
+    <!-- MY ORDERS (student) -->
+    <section class="view" id="view-myorders">
+      <h2>My orders</h2>
+      <p class="hint">Every order you've submitted, newest first.</p>
+      <div class="ticket-list" id="order-list"></div>
+      <div class="empty-state" id="myorders-empty" hidden>
+        <p>No orders yet.</p>
+        <p class="empty-sub">Create one from the New Order tab.</p>
+      </div>
+    </section>
+
+    <!-- LOST & FOUND (student) -->
+    <section class="view" id="view-lostfound">
+      <h2>Lost &amp; found</h2>
+      <p class="hint">Enter a Laundry ID to pull up its orders and flag which garment is missing — it's linked straight to that garment's saved photo.</p>
+
+      <div class="lookup-row">
+        <input type="text" id="lookup-input" placeholder="e.g. 2464" maxlength="4">
+        <button class="btn btn-secondary" id="lookup-btn">Find orders</button>
+      </div>
+
+      <div id="lookup-result"></div>
+    </section>
+
+    <!-- STAFF DESK (staff) -->
+    <section class="view" id="view-staffdesk">
+      <h2>Staff desk</h2>
+      <p class="hint">Every order across all students. Update the stage as laundry moves through the process.</p>
+
+      <table class="staff-table" id="staff-table">
+        <thead>
+          <tr>
+            <th>Laundry ID</th>
+            <th>Student</th>
+            <th>Room</th>
+            <th>Slot days</th>
+            <th>Garments</th>
+            <th>Stage</th>
+            <th>Lost report</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table-body"></tbody>
+      </table>
+      <div class="empty-state" id="staffdesk-empty" hidden>
+        <p>No orders yet.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>JWASH</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
