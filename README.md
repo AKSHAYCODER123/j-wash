@@ -59,13 +59,4 @@ then go to localhost:8000
 Planned to add a Flask or Node backend with a proper database later, plus
 real login and maybe QR codes for the tickets.
 
-## pushing this to github
 
-```
-git init
-git add .
-git commit -m "initial commit"
-git branch -M main
-git remote add origin <your repo url>
-git push -u origin main
-```
