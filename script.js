@@ -1,13 +1,11 @@
-// JWASH - campus laundry slot system
-// using localStorage since we dont have a backend yet
+
 
 const garmentsKey = "jwash_garments_v3";
 const ordersKey = "jwash_orders_v3";
 const userKey = "jwash_current_user_v3";
 const roleKey = "jwash_role_v3";
 
-// slot groups - which 2 days a laundry ID can go pickup/dropoff
-// sunday is never in here, sunday is off for laundry campus wide
+
 // this is just based on id number for now (id % 3), replace with the
 // actual slot list from the laundry office if it doesnt match reality
 const SLOT_GROUPS = [
@@ -22,7 +20,7 @@ function getSlotDays(laundryId) {
   return SLOT_GROUPS[groupIndex];
 }
 
-// load saved data or start empty
+
 let garments = JSON.parse(localStorage.getItem(garmentsKey)) || [];
 let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
 let currentUser = JSON.parse(localStorage.getItem(userKey)) || null;
@@ -185,8 +183,7 @@ if (role === "student" && currentUser) startApp("wardrobe");
 if (role === "staff") startApp("staffdesk");
 
 // ------------------ wardrobe ------------------
-// this is the main idea from the synopsis - upload garment photo ONE time
-// and reuse it for every order after that instead of uploading again and again
+
 
 const garmentForm = document.getElementById("garment-form");
 const garmentPhotoInput = document.getElementById("input-garment-photo");
